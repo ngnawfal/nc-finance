@@ -1,0 +1,8 @@
+# Secrets — jangan pernah di-commit
+secret.env.bat
+
+# Build & run artifacts
+build/
+run_log.txt
+run_out.txt
+run_err.txt

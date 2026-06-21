@@ -1,0 +1,28 @@
+# === Secrets — JANGAN PERNAH di-commit ===
+nc-finance-backend/secret.env.bat
+secret.env.bat
+cookies.txt
+*.pem
+.env
+.env.*
+
+# === Backend build & run artifacts ===
+nc-finance-backend/build/
+build/
+run_log.txt
+run_out.txt
+run_err.txt
+*.class
+
+# === Frontend (Next.js / Node) ===
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# === Tooling / OS noise ===
+.playwright-mcp/
+.codegraph/
+.DS_Store
+Thumbs.db
