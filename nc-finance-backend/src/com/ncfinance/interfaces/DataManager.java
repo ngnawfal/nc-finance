@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Interface generic untuk kontrak CRUD manager data.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.interfaces;
 
 import java.util.List;

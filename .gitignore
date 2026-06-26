@@ -23,6 +23,19 @@ next-env.d.ts
 
 # === Tooling / OS noise ===
 .playwright-mcp/
+.pdf-browser-profile/
 .codegraph/
 .DS_Store
 Thumbs.db
+
+# === Deploy / packaging artifacts ===
+*.tgz
+*.zip
+
+# === Agent / tooling config ===
+.omo/
+.claude/
+.codegraph/
+CLAUDE.md
+AGENTS.md
+RTK.md

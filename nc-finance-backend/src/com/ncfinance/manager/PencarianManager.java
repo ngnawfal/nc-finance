@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Index transaksi berbasis TreeMap untuk filter dan laporan tanggal.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.manager;
 
 import com.ncfinance.model.Transaksi;

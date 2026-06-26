@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Endpoint login, logout, session, dan rate limit percobaan login.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.server;
 
 import com.ncfinance.database.DatabaseConnection;

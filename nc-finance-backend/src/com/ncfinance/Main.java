@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Entry point aplikasi: load manager, menjalankan demo struktur data, lalu start API server.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance;
 
 import com.ncfinance.database.DatabaseConnection;

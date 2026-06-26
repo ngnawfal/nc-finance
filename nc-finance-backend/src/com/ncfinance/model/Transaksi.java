@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Model transaksi pembayaran dan Comparable untuk sorting waktu.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.model;
 
 import java.time.LocalDateTime;

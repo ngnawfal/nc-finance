@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Hash password SHA-256/PBKDF2 dan verifikasi aman.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.util;
 
 import java.security.MessageDigest;

@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Mengelola data pendaftaran peserta dan relasi kursus.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.manager;
 
 import com.ncfinance.database.DatabaseConnection;

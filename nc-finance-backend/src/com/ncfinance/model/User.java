@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Abstract class user sebagai dasar role staf dan manajer.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.model;
 
 import java.util.List;

@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Koneksi JDBC MySQL dan validasi environment database.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.database;
 
 import java.sql.Connection;

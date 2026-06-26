@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Registrasi route HTTP API Java.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.server;
 
 import com.sun.net.httpserver.HttpServer;

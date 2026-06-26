@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Mengelola graph siswa-kursus memakai adjacency list, BFS, dan DFS.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.manager;
 
 import com.ncfinance.database.DatabaseConnection;

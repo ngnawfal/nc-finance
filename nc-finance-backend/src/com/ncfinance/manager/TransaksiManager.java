@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Mengelola transaksi memakai ArrayList, Stack undo, dan Queue validasi.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.manager;
 
 import com.ncfinance.database.DatabaseConnection;

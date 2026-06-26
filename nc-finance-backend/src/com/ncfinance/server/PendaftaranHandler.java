@@ -1,6 +1,11 @@
+/*
+ * NC Finance Code Note: Endpoint CRUD pendaftaran peserta dan berkas.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.server;
 
 import com.ncfinance.database.DatabaseConnection;
+import com.ncfinance.model.Pembayaran;
 import com.ncfinance.model.PendaftaranPeserta;
 import com.ncfinance.model.Siswa;
 import com.ncfinance.model.User;
@@ -11,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /** /api/pendaftaran formulir pendaftaran peserta. */
 public class PendaftaranHandler extends BaseHandler {
@@ -51,7 +57,8 @@ public class PendaftaranHandler extends BaseHandler {
                 String json = body(ex);
                 String kodeKursus = required(json, "kodeKursus");
                 String namaKursus = namaKursus(kodeKursus);
-                PendaftaranPeserta p = new PendaftaranPeserta(AppContext.pendaftaranManager.generateNextId(), AppContext.pendaftaranManager.generateNextNomor(), required(json, "namaLengkap"), required(json, "noKtp"), required(json, "tempatLahir"), parseDate(required(json, "tanggalLahir")), required(json, "jenisKelamin"), required(json, "alamatLengkap"), required(json, "noTelpWa"), extractJsonString(json, "agama"), extractJsonString(json, "asalInstansi"), namaKursus, extractJsonString(json, "namaAyah"), extractJsonString(json, "namaIbu"), extractJsonString(json, "alamatOrangTua"), false, false, false, false, extractJsonString(json, "tempatTtd") == null ? "Kudus" : extractJsonString(json, "tempatTtd"), parseDateNullable(extractJsonString(json, "tanggalTtd")), extractJsonString(json, "namaTerang"), "terdaftar");
+                String statusPendaftaran = "draft".equals(extractJsonString(json, "statusPendaftaran")) ? "draft" : "terdaftar";
+                PendaftaranPeserta p = new PendaftaranPeserta(AppContext.pendaftaranManager.generateNextId(), AppContext.pendaftaranManager.generateNextNomor(), required(json, "namaLengkap"), required(json, "noKtp"), required(json, "tempatLahir"), parseDate(required(json, "tanggalLahir")), required(json, "jenisKelamin"), required(json, "alamatLengkap"), required(json, "noTelpWa"), extractJsonString(json, "agama"), extractJsonString(json, "asalInstansi"), namaKursus, extractJsonString(json, "namaAyah"), extractJsonString(json, "namaIbu"), extractJsonString(json, "alamatOrangTua"), false, false, false, false, extractJsonString(json, "tempatTtd") == null ? "Kudus" : extractJsonString(json, "tempatTtd"), parseDateNullable(extractJsonString(json, "tanggalTtd")), extractJsonString(json, "namaTerang"), statusPendaftaran);
                 AppContext.pendaftaranManager.tambah(p);
                 LocalDate mulai = parseDateNullable(extractJsonString(json, "tanggalMulai"));
                 if (mulai == null) mulai = LocalDate.now();
@@ -60,8 +67,26 @@ public class PendaftaranHandler extends BaseHandler {
                 Siswa s = new Siswa(AppContext.siswaManager.generateNextId(), AppContext.siswaManager.generateNextNim(), p.getNamaLengkap(), kodeKursus, p.getNoTelpWa(), p.getAlamatLengkap(), biayaKursus(kodeKursus), LocalDate.now(), mulai, selesai, "aktif");
                 AppContext.siswaManager.tambah(s);
                 AppContext.graphManager.addEdge(s.getNim(), s.getKategoriKursus());
+                Pembayaran pembayaranAwal = null;
+                if ("terdaftar".equals(statusPendaftaran)) {
+                    pembayaranAwal = new Pembayaran(
+                        AppContext.transaksiManager.generateNextId(),
+                        s.getId(),
+                        s.getNama(),
+                        s.getNim(),
+                        user.getId(),
+                        biayaKursus(kodeKursus),
+                        "tunai",
+                        null,
+                        "Tagihan otomatis dari pendaftaran " + p.getNomorPendaftaran(),
+                        "pending",
+                        LocalDateTime.now(),
+                        null
+                    );
+                    AppContext.transaksiManager.tambah(pembayaranAwal);
+                }
                 AuditLogger.log(user, ex, "create", "pendaftaran", p.getNomorPendaftaran());
-                send(ex, 201, "{\"pendaftaran\":" + JsonUtil.pendaftaran(p) + "}"); return;
+                send(ex, 201, "{\"pendaftaran\":" + JsonUtil.pendaftaran(p) + ",\"siswa\":" + JsonUtil.siswa(s) + (pembayaranAwal == null ? "" : ",\"transaksi\":" + JsonUtil.transaksi(pembayaranAwal)) + "}"); return;
             }
             error(ex, 404, "Pendaftaran endpoint tidak ditemukan");
         } catch (IllegalArgumentException e) {

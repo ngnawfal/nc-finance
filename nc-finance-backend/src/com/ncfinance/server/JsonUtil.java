@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Helper serialisasi JSON manual.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.server;
 
 import com.ncfinance.model.Pembayaran;

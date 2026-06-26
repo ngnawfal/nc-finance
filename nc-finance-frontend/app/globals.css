@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: "Newsreader", "Instrument Serif", Georgia, serif;
+
+  /* Canvas */
+  --color-canvas: #f7f6f3;
+  --color-surface: #f9f9f8;
+  --color-white: #ffffff;
+
+  /* Text */
+  --color-ink: #111111;
+  --color-ink-2: #2f3437;
+  --color-muted: #787774;
+  --color-border: #eaeaea;
+
+  /* Pastels */
+  --color-pale-red: #fdebec;
+  --color-pale-red-text: #9f2f2d;
+  --color-pale-blue: #e1f3fe;
+  --color-pale-blue-text: #1f6c9f;
+  --color-pale-green: #edf3ec;
+  --color-pale-green-text: #346538;
+  --color-pale-yellow: #fbf3db;
+  --color-pale-yellow-text: #956400;
+
+  /* Spacing */
+  --spacing-section: 6rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+/* Scroll entry animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(8px);
+  will-change: opacity, transform;
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { transition: none; opacity: 1; transform: none; }
+}
+
+/* Stagger children */
+.stagger > * {
+  --index: 0;
+  animation-delay: calc(var(--index) * 80ms);
+}
+
+/* Card hover */
+.card-hover {
+  transition: box-shadow 200ms ease;
+}
+.card-hover:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #eaeaea; border-radius: 2px; }

@@ -1,3 +1,7 @@
+/*
+ * NC Finance Code Note: Model program pelatihan/kursus.
+ * Komentar ini ditambahkan untuk dokumentasi UAS agar fungsi file mudah dipahami saat presentasi/demo.
+ */
 package com.ncfinance.model;
 
 /**
